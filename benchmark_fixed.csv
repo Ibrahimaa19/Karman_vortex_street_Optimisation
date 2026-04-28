@@ -1,0 +1,10 @@
+Type,MPI,OMP,Total,FOM
+MPI,8,1,8,212.86
+MPI,4,1,4,58.13
+MPI,2,1,2,22.66
+MPI,1,1,1,6.01
+OpenMP,1,2,2,8.08
+OpenMP,1,4,4,7.93
+OpenMP,1,8,8,7.78
+Hybrid,4,2,8,61.51
+Hybrid,2,4,8,29.01

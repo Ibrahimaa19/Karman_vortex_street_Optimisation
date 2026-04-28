@@ -1,0 +1,9 @@
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/CMakeFiles/top.lbm-lib.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/CMakeFiles/top.lbm-exe.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/CMakeFiles/top.display.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/CMakeFiles/edit_cache.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/CMakeFiles/rebuild_cache.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/src/lbm/CMakeFiles/edit_cache.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/src/lbm/CMakeFiles/rebuild_cache.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/src/bin/CMakeFiles/edit_cache.dir
+/home/ibra/Documents/Karman_vortex_street_Optimisation/build/src/bin/CMakeFiles/rebuild_cache.dir

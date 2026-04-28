@@ -1,0 +1,75 @@
+==464257== Memcheck, a memory error detector
+==464257== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==464257== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==464257== Command: mpirun -np 2 ./build/top.lbm-exe config.txt
+==464257== 
+==464257== Conditional jump or move depends on uninitialised value(s)
+==464257==    at 0x14249E: PMIU_cmd_output (in /usr/local/mpich-4.3.0/bin/mpiexec.hydra)
+==464257==    by 0x12A5DC: HYD_pmcd_pmi_send (pmiserv_common.c:49)
+==464257==    by 0x122865: HYD_pmiserv_pmi_reply (pmiserv_pmi.c:28)
+==464257==    by 0x11F5EF: HYD_pmiserv_barrier (pmiserv_misc.c:32)
+==464257==    by 0x121BE0: handle_pmi_cmd (pmiserv_cb.c:95)
+==464257==    by 0x121BE0: control_cb (pmiserv_cb.c:365)
+==464257==    by 0x138EAE: HYDT_dmxu_poll_wait_for_event (demux_poll.c:75)
+==464257==    by 0x12484B: HYD_pmci_wait_for_completion (pmiserv_pmci.c:170)
+==464257==    by 0x1109C6: main (mpiexec.c:259)
+==464257==  Uninitialised value was created by a stack allocation
+==464257==    at 0x11F532: HYD_pmiserv_barrier (pmiserv_misc.c:15)
+==464257== 
+==464257== Conditional jump or move depends on uninitialised value(s)
+==464257==    at 0x1424E4: PMIU_cmd_output (in /usr/local/mpich-4.3.0/bin/mpiexec.hydra)
+==464257==    by 0x12A5DC: HYD_pmcd_pmi_send (pmiserv_common.c:49)
+==464257==    by 0x122865: HYD_pmiserv_pmi_reply (pmiserv_pmi.c:28)
+==464257==    by 0x11F5EF: HYD_pmiserv_barrier (pmiserv_misc.c:32)
+==464257==    by 0x121BE0: handle_pmi_cmd (pmiserv_cb.c:95)
+==464257==    by 0x121BE0: control_cb (pmiserv_cb.c:365)
+==464257==    by 0x138EAE: HYDT_dmxu_poll_wait_for_event (demux_poll.c:75)
+==464257==    by 0x12484B: HYD_pmci_wait_for_completion (pmiserv_pmci.c:170)
+==464257==    by 0x1109C6: main (mpiexec.c:259)
+==464257==  Uninitialised value was created by a stack allocation
+==464257==    at 0x11F532: HYD_pmiserv_barrier (pmiserv_misc.c:15)
+==464257== 
+┌─────────────────────────────────────┐
+│ LBM KARMAN VORTEX STREET SIMULATION │
+└─────────────────────────────────────┘
+ CONFIG PARAMETERS
+ ┬────────────────────────────────────
+ ├ITERATIONS:          100
+ ├WIDTH:               800
+ ├HEIGHT:              160
+ ├OBSTACLE X COORD:    100.000000
+ ├OBSTACLE Y COORD:    80.000000
+ ├OBSTACLE RADIUS:     12.000000
+ ├REYNOLDS NUMBER:     96.000000
+ ├INFLOW MAX VELOCITY: 0.160000
+ ├OUTPUT FILENAME:     results.raw
+ └WRITE INTERVAL:      50
+
+ DERIVED PARAMETERS
+ ┬────────────────────────────────────
+ ├KINETIC VISCOSITY:  : 0.040000
+ └RELAX PARAMETER:    : 1.612903
+
+RANK|      TOP   BOTTOM     LEFT    RIGHT |     TOP LEFT    TOP RIGHT  BOTTOM LEFT BOTTOM RIGHT |  POS X  POS Y |  DIM X  DIM Y
+   0|      -1        1       -1       -1  |          -1           -1           -1           -1  |     0      0  |   802     82 
+   1|       0       -1       -1       -1  |          -1           -1           -1           -1  |     0     80  |   802     82 
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 464286 RUNNING AT Book4Ibra
+=   EXIT CODE: 139
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Segmentation fault (signal 11)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
+==464257== 
+==464257== HEAP SUMMARY:
+==464257==     in use at exit: 0 bytes in 0 blocks
+==464257==   total heap usage: 1,376 allocs, 1,376 frees, 378,419 bytes allocated
+==464257== 
+==464257== All heap blocks were freed -- no leaks are possible
+==464257== 
+==464257== For lists of detected and suppressed errors, rerun with: -s
+==464257== ERROR SUMMARY: 4 errors from 2 contexts (suppressed: 0 from 0)

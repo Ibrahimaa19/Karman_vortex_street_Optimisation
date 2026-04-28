@@ -112,37 +112,65 @@ int main(int argc, char* argv[]) {
     putc('\n', stdout);
   }
 
+  double t_start, t_end;
+  double t_collision = 0.0, t_propagation = 0.0, t_halo = 0.0, t_special = 0.0;
+
   // Time steps
   const double start_time = MPI_Wtime();
   for (ssize_t i = 1; i <= ITERATIONS; i++) {
     if (rank == RANK_MASTER) {
       fprintf(stderr, "\rStep: %6d/%6d", i, ITERATIONS);
     }
+
+    t_start = MPI_Wtime();
     // Compute special actions (border, obstacle...)
     special_cells(&mesh, &mesh_type, &mesh_comm);
     // Need to wait all before doing next step
     MPI_Barrier(MPI_COMM_WORLD);
+    t_end = MPI_Wtime();
+    t_special += (t_end - t_start);
 
+    t_start = MPI_Wtime();
     // Compute collision term
     collision(&temp, &mesh);
     // Need to wait all before doing next step
     MPI_Barrier(MPI_COMM_WORLD);
+    t_end = MPI_Wtime();
+    t_collision += (t_end - t_start);
 
+    t_start = MPI_Wtime();
     // Propagate values from node to neighboors
     lbm_comm_halo_exchange(&mesh_comm, &temp);
+    t_end = MPI_Wtime();
+    t_halo += (t_end - t_start);
+    
+    t_start = MPI_Wtime();
     propagation(&mesh, &temp);
     // Need to wait all before doing next step
     MPI_Barrier(MPI_COMM_WORLD);
+    t_end = MPI_Wtime();
+    t_propagation += (t_end - t_start);
 
     // Save step
     if (i % WRITE_STEP_INTERVAL == 0 && lbm_gbl_config.output_filename != NULL) {
       save_frame_all_domain(fp, &mesh, &temp_render);
     }
   }
+
   const double end_time      = MPI_Wtime();
   const double elapsed_time  = end_time - start_time;
   const uint64_t total_cells = static_cast<uint64_t>(MESH_WIDTH) * MESH_HEIGHT * comm_size;
   const double mlups         = (static_cast<double>(total_cells) * ITERATIONS) / (elapsed_time * 1e6);
+
+  if (rank == 0) {
+    printf("\n=== TIMING RESULTS ===\n");
+    printf("Special : %.3f s (%.1f%%)\n", t_special, 100.0 * t_special / elapsed_time);
+    printf("Collision      : %.3f s (%.1f%%)\n", t_collision, 100.0 * t_collision / elapsed_time);
+    printf("Halo  : %.3f s (%.1f%%)\n", t_halo, 100.0 * t_halo / elapsed_time);
+    printf("Propagation    : %.3f s (%.1f%%)\n", t_propagation, 100.0 * t_propagation / elapsed_time);
+    printf("Total          : %.3f s\n", elapsed_time);
+    printf("FOM            : %.2f MLUPS\n", mlups);
+  }
 
   MPI_Barrier(MPI_COMM_WORLD);
   if (rank == RANK_MASTER) {

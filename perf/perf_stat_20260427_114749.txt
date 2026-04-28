@@ -1,0 +1,48 @@
+┌─────────────────────────────────────┐
+│ LBM KARMAN VORTEX STREET SIMULATION │
+└─────────────────────────────────────┘
+ CONFIG PARAMETERS
+ ┬────────────────────────────────────
+ ├ITERATIONS:          100
+ ├WIDTH:               800
+ ├HEIGHT:              160
+ ├OBSTACLE X COORD:    100.000000
+ ├OBSTACLE Y COORD:    80.000000
+ ├OBSTACLE RADIUS:     12.000000
+ ├REYNOLDS NUMBER:     96.000000
+ ├INFLOW MAX VELOCITY: 0.160000
+ ├OUTPUT FILENAME:     results.raw
+ └WRITE INTERVAL:      50
+
+ DERIVED PARAMETERS
+ ┬────────────────────────────────────
+ ├KINETIC VISCOSITY:  : 0.040000
+ └RELAX PARAMETER:    : 1.612903
+
+RANK|      TOP   BOTTOM     LEFT    RIGHT |     TOP LEFT    TOP RIGHT  BOTTOM LEFT BOTTOM RIGHT |  POS X  POS Y |  DIM X  DIM Y
+   0|      -1        1       -1       -1  |          -1           -1           -1           -1  |     0      0  |   802     82 
+   1|       0       -1       -1       -1  |          -1           -1           -1           -1  |     0     80  |   802     82 
+
+Step:      1/   100Step:      2/   100Step:      3/   100Step:      4/   100Step:      5/   100Step:      6/   100Step:      7/   100Step:      8/   100Step:      9/   100Step:     10/   100Step:     11/   100Step:     12/   100Step:     13/   100Step:     14/   100Step:     15/   100Step:     16/   100Step:     17/   100Step:     18/   100Step:     19/   100Step:     20/   100Step:     21/   100Step:     22/   100Step:     23/   100Step:     24/   100Step:     25/   100Step:     26/   100Step:     27/   100Step:     28/   100Step:     29/   100Step:     30/   100Step:     31/   100Step:     32/   100Step:     33/   100Step:     34/   100Step:     35/   100Step:     36/   100Step:     37/   100Step:     38/   100Step:     39/   100Step:     40/   100Step:     41/   100Step:     42/   100Step:     43/   100Step:     44/   100Step:     45/   100Step:     46/   100Step:     47/   100Step:     48/   100Step:     49/   100Step:     50/   100Step:     51/   100Step:     52/   100Step:     53/   100Step:     54/   100Step:     55/   100Step:     56/   100Step:     57/   100Step:     58/   100Step:     59/   100Step:     60/   100Step:     61/   100Step:     62/   100Step:     63/   100Step:     64/   100Step:     65/   100Step:     66/   100Step:     67/   100Step:     68/   100Step:     69/   100Step:     70/   100Step:     71/   100Step:     72/   100Step:     73/   100Step:     74/   100Step:     75/   100Step:     76/   100Step:     77/   100Step:     78/   100Step:     79/   100Step:     80/   100Step:     81/   100Step:     82/   100Step:     83/   100Step:     84/   100Step:     85/   100Step:     86/   100Step:     87/   100Step:     88/   100Step:     89/   100Step:     90/   100Step:     91/   100Step:     92/   100Step:     93/   100Step:     94/   100Step:     95/   100Step:     96/   100Step:     97/   100Step:     98/   100Step:     99/   100Step:    100/   100SIMULATION COMPLETED.
+
+FOM:  36.44 MLUPS
+
+ Performance counter stats for 'mpirun -np 2 ./build/top.lbm-exe config.txt':
+
+     6 016 514 713      cpu_atom/cycles/                                                        (66,52%)
+     7 270 171 126      cpu_core/cycles/                                                        (33,48%)
+    10 235 376 104      cpu_atom/instructions/           #    1,70  insn per cycle              (66,52%)
+    15 082 620 713      cpu_core/instructions/           #    2,07  insn per cycle              (33,48%)
+        46 860 025      cpu_atom/cache-misses/           #   25,11% of all cache refs           (66,52%)
+        68 095 888      cpu_core/cache-misses/           #   39,04% of all cache refs           (33,48%)
+       186 593 416      cpu_atom/cache-references/                                              (66,52%)
+       174 415 672      cpu_core/cache-references/                                              (33,48%)
+   <not supported>      cpu_atom/L1-dcache-load-misses/                                       
+        39 950 650      cpu_core/L1-dcache-load-misses/                                         (33,48%)
+
+       0,851453592 seconds time elapsed
+
+       5,026499000 seconds user
+       0,293779000 seconds sys
+
+

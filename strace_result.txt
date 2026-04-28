@@ -1,0 +1,125 @@
+strace: Process 45003 attached
+strace: Process 45007 attached
+strace: Process 45008 attached
+strace: Process 45009 attached
+strace: Process 45010 attached
+┌─────────────────────────────────────┐
+│ LBM KARMAN VORTEX STREET SIMULATION │
+└─────────────────────────────────────┘
+ CONFIG PARAMETERS
+ ┬────────────────────────────────────
+ ├ITERATIONS:          10
+ ├WIDTH:               800
+ ├HEIGHT:              160
+ ├OBSTACLE X COORD:    100.000000
+ ├OBSTACLE Y COORD:    80.000000
+ ├OBSTACLE RADIUS:     12.000000
+ ├REYNOLDS NUMBER:     96.000000
+ ├INFLOW MAX VELOCITY: 0.160000
+ ├OUTPUT FILENAME:     results.raw
+ └WRITE INTERVAL:      50
+
+ DERIVED PARAMETERS
+ ┬────────────────────────────────────
+ ├KINETIC VISCOSITY:  : 0.040000
+ └RELAX PARAMETER:    : 1.612903
+
+RANK|      TOP   BOTTOM     LEFT    RIGHT |     TOP LEFT    TOP RIGHT  BOTTOM LEFT BOTTOM RIGHT |  POS X  POS Y |  DIM X  DIM Y
+   0|      -1        1       -1       -1  |          -1           -1           -1           -1  |     0      0  |   802     42 
+   1|       0        2       -1       -1  |          -1           -1           -1           -1  |     0     40  |   802     42 
+   2|       1        3       -1       -1  |          -1           -1           -1           -1  |     0     80  |   802     42 
+   3|       2       -1       -1       -1  |          -1           -1           -1           -1  |     0    120  |   802     42 
+
+Step:      1/    10[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+Step:      2/    10[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+Step:      3/    10[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+Step:      4/    10[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+Step:      5/    10[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+Step:      6/    10[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+Step:      7/    10[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+Step:      8/    10[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+Step:      9/    10[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] <... nanosleep resumed>NULL) = 0
+[pid 45010] <... nanosleep resumed>NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+Step:     10/    10[pid 45008] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45007] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45009] nanosleep({tv_sec=1, tv_nsec=0},  <unfinished ...>
+[pid 45010] nanosleep({tv_sec=1, tv_nsec=0}, NULL) = 0
+[pid 45009] <... nanosleep resumed>NULL) = 0
+[pid 45008] <... nanosleep resumed>NULL) = 0
+[pid 45007] <... nanosleep resumed>NULL) = 0
+SIMULATION COMPLETED.
+
+FOM:  0.48 MLUPS
+[pid 45010] +++ exited with 0 +++
+[pid 45003] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=45010, si_uid=1000, si_status=0, si_utime=54 /* 0.54 s */, si_stime=6 /* 0.06 s */} ---
+[pid 45007] +++ exited with 0 +++
+[pid 45003] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=45007, si_uid=1000, si_status=0, si_utime=57 /* 0.57 s */, si_stime=5 /* 0.05 s */} ---
+[pid 45008] +++ exited with 0 +++
+[pid 45003] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=45008, si_uid=1000, si_status=0, si_utime=60 /* 0.60 s */, si_stime=5 /* 0.05 s */} ---
+[pid 45009] +++ exited with 0 +++
+[pid 45003] --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=45009, si_uid=1000, si_status=0, si_utime=60 /* 0.60 s */, si_stime=6 /* 0.06 s */} ---
+[pid 45003] +++ exited with 0 +++
+--- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=45003, si_uid=1000, si_status=0, si_utime=2 /* 0.02 s */, si_stime=5 /* 0.05 s */} ---
++++ exited with 0 +++

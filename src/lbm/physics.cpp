@@ -189,26 +189,30 @@ void collision(Mesh* mesh_out, const Mesh* mesh_in) {
   assert(mesh_in->width == mesh_out->width);
   assert(mesh_in->height == mesh_out->height);
 
-  // Loop on all inner cells
-  for (size_t j = 1; j < mesh_in->height - 1; j++) {
-    for (size_t i = 1; i < mesh_in->width - 1; i++) {
-      compute_cell_collision(Mesh_get_cell(mesh_out, i, j), Mesh_get_cell(mesh_in, i, j));
+  int h = (int)(mesh_in->height - 1);
+  int w = (int)(mesh_in->width - 1);
+  
+  #pragma omp parallel for collapse(2) schedule(static)
+  for (int j = 1; j < h; j++) {
+    for (int i = 1; i < w; i++) {
+      compute_cell_collision(Mesh_get_cell(mesh_out, i, j), 
+                             Mesh_get_cell(mesh_in, i, j));
     }
   }
 }
 
 void propagation(Mesh* mesh_out, const Mesh* mesh_in) {
-  // Loop on all cells
-  for (size_t j = 0; j < mesh_out->height; j++) {
-    for (size_t i = 0; i < mesh_out->width; i++) {
-      // For all direction
-      for (size_t k = 0; k < DIRECTIONS; k++) {
-        // Compute destination point
-        ssize_t ii = (i + direction_matrix[k][0]);
-        ssize_t jj = (j + direction_matrix[k][1]);
-        // Propagate to neighboor nodes
-        if ((ii >= 0 && ii < mesh_out->width) && (jj >= 0 && jj < mesh_out->height)) {
-          Mesh_get_cell(mesh_out, ii, jj)[k] = Mesh_get_cell(mesh_in, i, j)[k];
+  int h = (int)mesh_out->height;
+  int w = (int)mesh_out->width;
+  
+  #pragma omp parallel for collapse(2) schedule(static)
+  for (int j = 0; j < h; j++) {
+    for (int i = 0; i < w; i++) {
+      for (int k = 0; k < DIRECTIONS; k++) {
+        int ii = i - (int)direction_matrix[k][0];
+        int jj = j - (int)direction_matrix[k][1];
+        if (ii >= 0 && ii < w && jj >= 0 && jj < h) {
+          Mesh_get_cell(mesh_out, i, j)[k] = Mesh_get_cell(mesh_in, ii, jj)[k];
         }
       }
     }

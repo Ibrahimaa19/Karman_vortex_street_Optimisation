@@ -1,0 +1,387 @@
+--------------------------------------------------------------------------------
+-- Metadata
+--------------------------------------------------------------------------------
+Invocation:       /usr/bin/cg_annotate valgrind_results/cachegrind.out
+Command:          ./build/top.lbm-exe config.txt
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Threshold:        0.1%
+Annotation:       on
+
+--------------------------------------------------------------------------------
+-- Summary
+--------------------------------------------------------------------------------
+Ir_____________________ 
+
+11,526,653,880 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+-- File:function summary
+--------------------------------------------------------------------------------
+  Ir__________________________  file:function
+
+< 9,559,483,196 (82.9%, 82.9%)  /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp:
+  3,409,457,616 (29.6%)           compute_equilibrium_profile(double*, double, int)
+  1,775,640,000 (15.4%)           propagation(Mesh*, Mesh const*) [clone ._omp_fn.0]
+  1,702,400,000 (14.8%)           compute_cell_collision(double*, double*)
+  1,648,633,056 (14.3%)           get_vect_norm_2(double const*, double const*)
+    540,544,000  (4.7%)           get_cell_velocity(double*, double*, double)
+    184,576,000  (1.6%)           get_cell_density(double*)
+    154,535,200  (1.3%)           special_cells(Mesh*, lbm_mesh_type_s*, lbm_comm_t_s const*)
+    102,453,000  (0.9%)           collision(Mesh*, Mesh const*) [clone ._omp_fn.0]
+     39,828,924  (0.3%)           helper_compute_poiseuille(unsigned long, unsigned long)
+
+< 1,051,930,156  (9.1%, 92.1%)  /home/ibra/Documents/Karman_vortex_street_Optimisation/include/lbm/structures.hpp:
+    814,475,200  (7.1%)           propagation(Mesh*, Mesh const*) [clone ._omp_fn.0]
+    166,399,800  (1.4%)           collision(Mesh*, Mesh const*) [clone ._omp_fn.0]
+     38,620,500  (0.3%)           special_cells(Mesh*, lbm_mesh_type_s*, lbm_comm_t_s const*)
+     28,034,424  (0.2%)           setup_init_state_global_poiseuille_profile(Mesh*, lbm_mesh_type_s*, lbm_comm_t_s const*)
+
+<   803,390,787  (7.0%, 99.0%)  ???:
+    799,515,442  (6.9%)           ???
+
+<    65,367,484  (0.6%, 99.6%)  /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/initialization.cpp:
+     62,621,238  (0.5%)           setup_init_state_global_poiseuille_profile(Mesh*, lbm_mesh_type_s*, lbm_comm_t_s const*)
+
+--------------------------------------------------------------------------------
+-- Function:file summary
+--------------------------------------------------------------------------------
+  Ir__________________________  function:file
+
+> 3,409,457,616 (29.6%, 29.6%)  compute_equilibrium_profile(double*, double, int):/home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+
+> 2,590,115,200 (22.5%, 52.0%)  propagation(Mesh*, Mesh const*) [clone ._omp_fn.0]:
+  1,775,640,000 (15.4%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+    814,475,200  (7.1%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/include/lbm/structures.hpp
+
+> 1,702,400,000 (14.8%, 66.8%)  compute_cell_collision(double*, double*):/home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+
+> 1,648,633,056 (14.3%, 81.1%)  get_vect_norm_2(double const*, double const*):/home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+
+>   800,008,191  (6.9%, 88.1%)  ???:
+    799,515,442  (6.9%)           ???
+
+>   540,544,000  (4.7%, 92.8%)  get_cell_velocity(double*, double*, double):/home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+
+>   268,852,800  (2.3%, 95.1%)  collision(Mesh*, Mesh const*) [clone ._omp_fn.0]:
+    166,399,800  (1.4%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/include/lbm/structures.hpp
+    102,453,000  (0.9%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+
+>   193,155,700  (1.7%, 96.8%)  special_cells(Mesh*, lbm_mesh_type_s*, lbm_comm_t_s const*):
+    154,535,200  (1.3%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+     38,620,500  (0.3%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/include/lbm/structures.hpp
+
+>   184,576,000  (1.6%, 98.4%)  get_cell_density(double*):/home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+
+>    90,655,662  (0.8%, 99.1%)  setup_init_state_global_poiseuille_profile(Mesh*, lbm_mesh_type_s*, lbm_comm_t_s const*):
+     62,621,238  (0.5%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/initialization.cpp
+     28,034,424  (0.2%)           /home/ibra/Documents/Karman_vortex_street_Optimisation/include/lbm/structures.hpp
+
+>    39,828,924  (0.3%, 99.5%)  helper_compute_poiseuille(unsigned long, unsigned long):/home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /home/ibra/Documents/Karman_vortex_street_Optimisation/include/lbm/structures.hpp
+--------------------------------------------------------------------------------
+Ir__________________ 
+
+-- line 94 ----------------------------------------
+            .         /// @brief Saves the current frame.
+            .         void save_frame(FILE* fp, const Mesh* mesh);
+            .         
+            .         /// @brief Prints a fatal error message.
+            .         void fatal(const char* message);
+            .         
+            .         /// @brief Retrieves a cell of a mesh given its coordinates.
+            .         static inline lbm_mesh_cell_t Mesh_get_cell(const Mesh* mesh, int x, int y) {
+1,006,424,644 (8.7%)    return &mesh->cells[(x * mesh->height + y) * DIRECTIONS];
+            .         }
+            .         
+            .         /// @brief Retrieves a column of a mesh given the `x` coordinate.
+            .         static inline lbm_mesh_cell_t Mesh_get_col(const Mesh* mesh, int x) {
+            .           // `+ DIRECTIONS` to skip the first (phantom) line
+            .           return &mesh->cells[x * mesh->height * DIRECTIONS + DIRECTIONS];
+            .         }
+            .         
+            .         /// @brief Retrieves a pointer on the cell type of a mesh given its coordinates.
+            .         static inline lbm_cell_type_t* lbm_cell_type_t_get_cell(const lbm_mesh_type_t* meshtype, uint32_t x, uint32_t y) {
+   45,505,512 (0.4%)    return &meshtype->types[x * meshtype->height + y];
+            .         }
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/initialization.cpp
+--------------------------------------------------------------------------------
+Ir_______________ 
+
+-- line 15 ----------------------------------------
+         .             for (size_t j = 0; j < mesh->height; j++) {
+         .               for (size_t k = 0; k < DIRECTIONS; k++) {
+         .                 Mesh_get_cell(mesh, i, j)[k] = equil_weight[k];
+         .               }
+         .             }
+         .           }
+         .         }
+         .         
+         4 (0.0%)  void setup_init_state_circle_obstacle(Mesh* mesh, lbm_mesh_type_t* mesh_type, const lbm_comm_t* mesh_comm) {
+         .           // Loop on nodes
+     1,306 (0.0%)    for (size_t j = mesh_comm->y; j < mesh->height + mesh_comm->y; j++) {
+ 1,039,724 (0.0%)      for (size_t i = mesh_comm->x; i < mesh->width + mesh_comm->x; i++) {
+ 1,300,878 (0.0%)        if (((i - OBSTACLE_X) * (i - OBSTACLE_X)) + ((j - OBSTACLE_Y) * (j - OBSTACLE_Y)) <= OBSTACLE_R * OBSTACLE_R) {
+     1,764 (0.0%)          *(lbm_cell_type_t_get_cell(mesh_type, i - mesh_comm->x, j - mesh_comm->y)) = CELL_BOUNCE_BACK;
+         .                 // for (size_t k = 0; k < DIMENSIONS; k++) {
+         .                 //     mesh[i][j][k] = 0.0;
+         .                 // }
+         .               }
+         .             }
+         .           }
+         4 (0.0%)  }
+         .         
+        28 (0.0%)  void setup_init_state_global_poiseuille_profile(Mesh* mesh, lbm_mesh_type_t* mesh_type, const lbm_comm_t* mesh_comm) {
+         4 (0.0%)    Vector v         = {0.0, 0.0};
+         .           const double rho = 1.0;
+         .         
+         .           int rank;
+         6 (0.0%)    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+         .         
+         .           // Apply Poiseuille distribution for all nodes except on top/bottom border
+     8,034 (0.0%)    for (size_t i = 0; i < mesh->width; i++) {
+ 1,057,680 (0.0%)      for (size_t j = 0; j < mesh->height; j++) {
+ 7,796,088 (0.1%)        for (size_t k = 0; k < DIRECTIONS; k++) {
+         .                 // Compute equilibrium
+18,709,056 (0.2%)          v[0]                 = helper_compute_poiseuille(j + mesh_comm->y, MESH_HEIGHT);
+         .                 lbm_mesh_cell_t cell = Mesh_get_cell(mesh, i, j);
+18,709,056 (0.2%)          cell[k]              = compute_equilibrium_profile(v, rho, k);
+         .                 // Mark as standard fluid
+ 4,677,264 (0.0%)          *(lbm_cell_type_t_get_cell(mesh_type, i, j)) = CELL_FUILD;
+         .                 // This is a try to init the fluid with a null speed except on the left border.
+         .                 if (i > 1) {
+11,664,000 (0.1%)            Mesh_get_cell(mesh, i, j)[k] = equil_weight[k];
+         .                 }
+         .               }
+         .             }
+         .           }
+        22 (0.0%)  }
+         .         
+        32 (0.0%)  void setup_init_state_border(Mesh* mesh, lbm_mesh_type_t* mesh_type, const lbm_comm_t* mesh_comm) {
+         4 (0.0%)    Vector v         = {0.0, 0.0};
+         .           const double rho = 1.0;
+         .         
+         .           // Setup left border type
+         4 (0.0%)    if (mesh_comm->left_id == -1) {
+        60 (0.0%)      for (size_t j = 1; j < mesh->height - 1; j++) {
+        58 (0.0%)        *(lbm_cell_type_t_get_cell(mesh_type, 0, j)) = CELL_LEFT_IN;
+         .             }
+         .           }
+         .         
+         .           // Setup right border type
+         6 (0.0%)    if (mesh_comm->right_id == -1) {
+       970 (0.0%)      for (size_t j = 1; j < mesh->height - 1; j++) {
+       324 (0.0%)        *(lbm_cell_type_t_get_cell(mesh_type, mesh->width - 1, j)) = CELL_RIGHT_OUT;
+         .             }
+         .           }
+         .         
+         .           // Setup top border type
+         6 (0.0%)    if (mesh_comm->top_id == -1) {
+     8,036 (0.0%)      for (size_t i = 0; i < mesh->width; i++) {
+    48,120 (0.0%)        for (size_t k = 0; k < DIRECTIONS; k++) {
+         .                 // Compute equilibrium.
+   101,052 (0.0%)          Mesh_get_cell(mesh, i, 0)[k] = compute_equilibrium_profile(v, rho, k);
+         .                 // Mark as bounce back
+    28,872 (0.0%)          *(lbm_cell_type_t_get_cell(mesh_type, i, 0)) = CELL_BOUNCE_BACK;
+         .               }
+         .             }
+         .           }
+         .         
+         .           // Setup bottom border type
+         6 (0.0%)    if (mesh_comm->bottom_id == -1) {
+     8,038 (0.0%)      for (size_t i = 0; i < mesh->width; i++) {
+    48,120 (0.0%)        for (size_t k = 0; k < DIRECTIONS; k++) {
+         .                 // Compute equilibrium.
+   129,924 (0.0%)          Mesh_get_cell(mesh, i, mesh->height - 1)[k] = compute_equilibrium_profile(v, rho, k);
+         .                 // Mark as bounce back
+    28,872 (0.0%)          *(lbm_cell_type_t_get_cell(mesh_type, i, mesh->height - 1)) = CELL_BOUNCE_BACK;
+         .               }
+         .             }
+         .           }
+        24 (0.0%)  }
+         .         
+        14 (0.0%)  void setup_init_state(Mesh* mesh, lbm_mesh_type_t* mesh_type, const lbm_comm_t* mesh_comm) {
+         2 (0.0%)    setup_init_state_global_poiseuille_profile(mesh, mesh_type, mesh_comm);
+         8 (0.0%)    setup_init_state_border(mesh, mesh_type, mesh_comm);
+         8 (0.0%)    setup_init_state_circle_obstacle(mesh, mesh_type, mesh_comm);
+         6 (0.0%)  }
+
+--------------------------------------------------------------------------------
+-- Annotated source file: /home/ibra/Documents/Karman_vortex_street_Optimisation/src/lbm/physics.cpp
+--------------------------------------------------------------------------------
+Ir___________________ 
+
+-- line 33 ----------------------------------------
+            .          };
+            .          
+            .          /// Opposite directions for bounce back implementation
+            .          const int opposite_of[DIRECTIONS] = {0, 3, 4, 1, 2, 7, 8, 5, 6};
+            .          #else
+            .          #error Need to define adapted equilibrium distribution function
+            .          #endif
+            .          
+  235,519,008  (2.0%)  double get_vect_norm_2(Vector const a, Vector const b) {
+            .            double res = 0.0;
+            .            for (size_t k = 0; k < DIMENSIONS; k++) {
+1,177,595,040 (10.2%)      res += a[k] * b[k];
+            .            }
+            .            return res;
+  235,519,008  (2.0%)  }
+            .          
+   13,184,000  (0.1%)  double get_cell_density(const lbm_mesh_cell_t cell) {
+   26,368,000  (0.2%)    assert(cell != NULL);
+            .            double res = 0.0;
+            .            for (size_t k = 0; k < DIRECTIONS; k++) {
+  131,840,000  (1.1%)      res += cell[k];
+            .            }
+            .            return res;
+   13,184,000  (0.1%)  }
+            .          
+   26,368,000  (0.2%)  void get_cell_velocity(Vector v, const lbm_mesh_cell_t cell, double cell_density) {
+   26,368,000  (0.2%)    assert(v != NULL);
+  145,024,000  (1.3%)    assert(cell != NULL);
+            .          
+            .            // Loop on all dimensions
+            .            for (size_t d = 0; d < DIMENSIONS; d++) {
+            .              v[d] = 0.0;
+            .          
+            .              // Sum all directions
+            .              for (size_t k = 0; k < DIRECTIONS; k++) {
+  290,048,000  (2.5%)        v[d] += cell[k] * direction_matrix[k][d];
+            .              }
+            .          
+            .              // Normalize
+   26,368,000  (0.2%)      v[d] /= cell_density;
+            .            }
+   26,368,000  (0.2%)  }
+            .          
+  822,972,528  (7.1%)  double compute_equilibrium_profile(Vector velocity, double density, int direction) {
+  352,702,512  (3.1%)    const double v2 = get_vect_norm_2(velocity, velocity);
+            .          
+            .            // Compute `e_i * v_i / c`
+  587,837,520  (5.1%)    const double p  = get_vect_norm_2(direction_matrix[direction], velocity);
+  117,567,504  (1.0%)    const double p2 = p * p;
+            .          
+            .            // Terms without density and direction weight
+  587,837,520  (5.1%)    double f_eq = 1.0 + (3.0 * p) + ((9.0 / 2.0) * p2) - ((3.0 / 2.0) * v2);
+            .          
+            .            // Multiply everything by the density and direction weight
+  470,270,016  (4.1%)    f_eq *= equil_weight[direction] * density;
+            .          
+            .            return f_eq;
+  470,270,016  (4.1%)  }
+            .          
+  166,400,000  (1.4%)  void compute_cell_collision(lbm_mesh_cell_t cell_out, const lbm_mesh_cell_t cell_in) {
+            .            // Compute macroscopic values
+   38,400,000  (0.3%)    const double density = get_cell_density(cell_in);
+            .            Vector v;
+   51,200,000  (0.4%)    get_cell_velocity(v, cell_in, density);
+            .          
+            .            // Loop on microscopic directions
+  384,000,000  (3.3%)    for (size_t k = 0; k < DIRECTIONS; k++) {
+            .              // Compute f at equilibrium
+  460,800,000  (4.0%)      double f_eq = compute_equilibrium_profile(v, density, k);
+            .              // Compute f_out
+  460,800,000  (4.0%)      cell_out[k] = cell_in[k] - RELAX_PARAMETER * (cell_in[k] - f_eq);
+            .            }
+  140,800,000  (1.2%)  }
+            .          
+      352,800  (0.0%)  void compute_bounce_back(lbm_mesh_cell_t cell) {
+            .            double tmp[DIRECTIONS];
+            .            for (size_t k = 0; k < DIRECTIONS; k++) {
+      617,400  (0.0%)      tmp[k] = cell[opposite_of[k]];
+            .            }
+            .            for (size_t k = 0; k < DIRECTIONS; k++) {
+      176,400  (0.0%)      cell[k] = tmp[k];
+            .            }
+      264,600  (0.0%)  }
+            .          
+    2,338,632  (0.0%)  double helper_compute_poiseuille(const size_t i, const size_t size) {
+    9,426,708  (0.1%)    const double y = (double)(i - 1);
+    7,015,896  (0.1%)    const double L = (double)(size - 1);
+   18,709,056  (0.2%)    return 4.0 * INFLOW_MAX_VELOCITY / (L * L) * (L * y - y * y);
+    2,338,632  (0.0%)  }
+            .          
+            .          void compute_inflow_zou_he_poiseuille_distr(const Mesh* mesh, lbm_mesh_cell_t cell, size_t id_y) {
+            .          #if DIRECTIONS != 9
+            .          #error Implemented only for 9 directions
+            .          #endif
+            .          
+            .            // Set macroscopic fluid info
+            .            // Poiseuille distribution on X and null on Y
+-- line 129 ----------------------------------------
+-- line 159 ----------------------------------------
+            .                      // - (1.0/2.0) * (rho * v_y)    <--- no velocity on Y so v_y = 0
+            .                      - (1.0 / 6.0) * (rho * v);
+            .            cell[6] = cell[8]
+            .                      + (1.0 / 2.0) * (cell[4] - cell[2])
+            .                      // + (1.0/2.0) * (rho * v_y)    <--- no velocity on Y so v_y = 0
+            .                      - (1.0 / 6.0) * (rho * v);
+            .          }
+            .          
+        1,100  (0.0%)  void special_cells(Mesh* mesh, lbm_mesh_type_t* mesh_type, const lbm_comm_t* mesh_comm) {
+            .            // Loop on all inner cells
+      400,500  (0.0%)    for (size_t i = 1; i < mesh->width - 1; i++) {
+   51,688,700  (0.4%)      for (size_t j = 1; j < mesh->height - 1; j++) {
+  102,400,000  (0.9%)        switch (*(lbm_cell_type_t_get_cell(mesh_type, i, j))) {
+            .                case CELL_FUILD:
+            .                  break;
+            .                case CELL_BOUNCE_BACK:
+       44,100  (0.0%)          compute_bounce_back(Mesh_get_cell(mesh, i, j));
+            .                  break;
+            .                case CELL_LEFT_IN:
+            .                  compute_inflow_zou_he_poiseuille_distr(mesh, Mesh_get_cell(mesh, i, j), j + mesh_comm->y);
+            .                  break;
+            .                case CELL_RIGHT_OUT:
+            .                  compute_outflow_zou_he_const_density(Mesh_get_cell(mesh, i, j));
+            .                  break;
+            .                }
+            .              }
+            .            }
+          800  (0.0%)  }
+            .          
+          600  (0.0%)  void collision(Mesh* mesh_out, const Mesh* mesh_in) {
+          400  (0.0%)    assert(mesh_in->width == mesh_out->width);
+          300  (0.0%)    assert(mesh_in->height == mesh_out->height);
+            .          
+        3,200  (0.0%)    #pragma omp parallel for collapse(2) schedule(static)
+          200  (0.0%)    for (size_t j = 1; j < mesh_in->height - 1; j++) {
+        2,900  (0.0%)      for (size_t i = 1; i < mesh_in->width - 1; i++) {
+  102,447,300  (0.9%)        compute_cell_collision(Mesh_get_cell(mesh_out, i, j), Mesh_get_cell(mesh_in, i, j));
+            .              }
+            .            }
+          500  (0.0%)  }
+            .          
+          500  (0.0%)  void propagation(Mesh* mesh_out, const Mesh* mesh_in) {
+            .            // Pull streaming: each output cell reads from its source — no write conflicts, safe for OpenMP
+        2,700  (0.0%)    #pragma omp parallel for collapse(2) schedule(static)
+        2,400  (0.0%)    for (size_t j = 0; j < mesh_out->height; j++) {
+       32,300  (0.0%)      for (size_t i = 0; i < mesh_out->width; i++) {
+   90,946,500  (0.8%)        for (size_t k = 0; k < DIRECTIONS; k++) {
+   38,977,200  (0.3%)          ssize_t ii = (ssize_t)i - (ssize_t)direction_matrix[k][0];
+   25,985,100  (0.2%)          ssize_t jj = (ssize_t)j - (ssize_t)direction_matrix[k][1];
+1,076,678,900  (9.3%)          if (ii >= 0 && ii < (ssize_t)mesh_in->width && jj >= 0 && jj < (ssize_t)mesh_in->height) {
+  543,015,700  (4.7%)            Mesh_get_cell(mesh_out, i, j)[k] = Mesh_get_cell(mesh_in, ii, jj)[k];
+            .                  }
+            .                }
+            .              }
+            .            }
+          500  (0.0%)  }
+
+--------------------------------------------------------------------------------
+-- Annotation summary
+--------------------------------------------------------------------------------
+Ir____________________ 
+
+10,676,780,836 (92.6%)    annotated: files known & above threshold & readable, line numbers known
+             0            annotated: files known & above threshold & readable, line numbers unknown
+             0          unannotated: files known & above threshold & two or more non-identical
+             0          unannotated: files known & above threshold & unreadable 
+    46,482,257  (0.4%)  unannotated: files known & below threshold
+   803,390,787  (7.0%)  unannotated: files unknown
+

@@ -1,0 +1,30 @@
+==455382== Cachegrind, a high-precision tracing profiler
+==455382== Copyright (C) 2002-2017, and GNU GPL'd, by Nicholas Nethercote et al.
+==455382== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==455382== Command: ./build/top.lbm-exe config.txt
+==455382== 
+┌─────────────────────────────────────┐
+│ LBM KARMAN VORTEX STREET SIMULATION │
+└─────────────────────────────────────┘
+ CONFIG PARAMETERS
+ ┬────────────────────────────────────
+ ├ITERATIONS:          100
+ ├WIDTH:               800
+ ├HEIGHT:              160
+ ├OBSTACLE X COORD:    100.000000
+ ├OBSTACLE Y COORD:    80.000000
+ ├OBSTACLE RADIUS:     12.000000
+ ├REYNOLDS NUMBER:     96.000000
+ ├INFLOW MAX VELOCITY: 0.160000
+ ├OUTPUT FILENAME:     results.raw
+ └WRITE INTERVAL:      50
+
+ DERIVED PARAMETERS
+ ┬────────────────────────────────────
+ ├KINETIC VISCOSITY:  : 0.040000
+ └RELAX PARAMETER:    : 1.612903
+
+RANK|      TOP   BOTTOM     LEFT    RIGHT |     TOP LEFT    TOP RIGHT  BOTTOM LEFT BOTTOM RIGHT |  POS X  POS Y |  DIM X  DIM Y
+   0|      -1       -1       -1       -1  |          -1           -1           -1           -1  |     0      0  |   802    162 
+
+Step:      1/   100Step:      2/   100Step:      3/   100

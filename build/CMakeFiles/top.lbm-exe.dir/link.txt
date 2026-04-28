@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -march=native -fopenmp -Wl,-rpath -Wl,/usr/local/mpich-4.3.0/lib -Wl,--enable-new-dtags "CMakeFiles/top.lbm-exe.dir/src/bin/main.cpp.o" -o top.lbm-exe  -Wl,-rpath,/home/ibra/Documents/Karman_vortex_street_Optimisation/build/lib:/usr/local/mpich-4.3.0/lib lib/libtop.lbm-lib.so /usr/local/mpich-4.3.0/lib/libmpi.so 
